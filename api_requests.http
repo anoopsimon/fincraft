@@ -1,0 +1,19 @@
+### Get All Users
+GET http://localhost:8080/api/users
+Accept: application/json
+
+### Get User by ID
+GET http://localhost:8080/api/users/1
+Accept: application/json
+
+### Create a New User
+POST http://localhost:8080/api/users
+Content-Type: application/json
+
+{
+  "name": "John Doe",
+  "email": "john.doe@example.com"
+}
+
+### Access h2 console
+GET http://localhost:8080/h2-console
