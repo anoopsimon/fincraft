@@ -98,16 +98,32 @@ The project loads initial user data from an SQL file (`config/data.sql`) at star
 
 ---
 
-## 🌐 **API Endpoints**
+## 📑 **API Documentation - Swagger UI**
 
-| Method | Endpoint            | Description              |
-|--------|---------------------|--------------------------|
-| GET    | `/api/users`        | Fetch all users          |
-| GET    | `/api/users/{id}`   | Fetch a user by ID       |
-| POST   | `/api/users`        | Create a new user        |
+This project includes **Swagger UI** for interactive API documentation and testing.
+
+### **How to Access Swagger Documentation**
+
+1. Start the application.
+2. Open your browser and go to the following URL:
+   ```
+   http://localhost:8080/swagger-ui.html
+   ```
+
+### **Available Endpoints**
+
+Swagger UI will display and allow testing of all available endpoints, such as:
+- **`GET /api/users`**: Fetch all users.
+- **`GET /api/users/{id}`**: Fetch a user by ID.
+- **`POST /api/users`**: Create a new user.
+
+### **OpenAPI Specification**
+If you need the raw OpenAPI JSON specification, access it at:
+```
+http://localhost:8080/v3/api-docs
+```
 
 ---
-
 ## 🤝 **Contributing**
 This is a learning project, so feel free to explore, modify, and experiment.
 
