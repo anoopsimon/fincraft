@@ -116,6 +116,6 @@ This is a learning project, so feel free to explore, modify, and experiment.
 ### 📧 **Contact**
 For queries or suggestions, feel free to contact:  
 **Name**: Anoop Simon  
-**Email**: anoop.simon@example.com
+**Email**: s451421990@gmail.com
 
 ---
