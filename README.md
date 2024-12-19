@@ -90,6 +90,59 @@ SELECT * FROM "user";
 
 ---
 
+## 🐳 **Run This App Using Docker Compose**
+
+You can run the entire application with a single command using **Docker Compose**. Ensure you have **Docker** installed on your system.
+
+### **Steps to Run**
+1. Navigate to the root directory of the project where `docker-compose.yml` is located.
+2. Run the following command to start all services:
+   ```bash
+   docker-compose up --build
+   ```
+3. Access the following services:
+    - **Spring Boot App**: [http://localhost:8080](http://localhost:8080)
+    - **H2 Console**: [http://localhost:8081](http://localhost:8081)
+        - **JDBC URL**: `jdbc:h2:mem:testdb`
+        - **Username**: `sa`
+        - **Password**: *(leave blank)*
+
+---
+
+## 🛠️ **Use Make Commands**
+
+For simplified management of the application, you can use the provided **Makefile**. This requires **Make** to be installed on your system.
+
+### **Common Commands**
+- **Build the Application**:
+  ```bash
+  make build
+  ```
+- **Start the Application**:
+  ```bash
+  make up
+  ```
+- **Stop the Application**:
+  ```bash
+  make down
+  ```
+- **View Logs**:
+  ```bash
+  make logs
+  ```
+- **Clean Up Resources**:
+  ```bash
+  make clean
+  ```
+
+### **Why Use Make?**
+- **Simplifies Workflow**: No need to remember complex `docker-compose` commands.
+- **Consistency**: Ensures uniformity across different environments.
+- **Ease of Use**: Quickly manage services with shorter, predefined commands.
+
+---
+
+
 ## 📊 **Sample Data**
 The project loads initial user data from an SQL file (`config/data.sql`) at startup. Example records:
 - `John Doe (john.doe@example.com)`
