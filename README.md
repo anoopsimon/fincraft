@@ -1,6 +1,10 @@
 
 # 🚀 **FinCraft - Learning Project**
 
+[![Build Status](https://github.com/anoopsimon/fincraft/actions/workflows/build-test.yml/badge.svg)](https://github.com/anoopsimon/fincraft/blob/main/.github/workflows/build-test.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Playwright Version](https://img.shields.io/badge/jdk-17-blue)](https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html)
+
 ## **1. About the Project**
 This is a simple backend project designed to help understand the basics of building REST APIs and working with databases in **Spring Boot**. The application provides endpoints to manage user data, such as creating and fetching user records.  
 
