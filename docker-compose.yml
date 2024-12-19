@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  app:
+    image: openjdk:17-jdk-alpine
+    container_name: fincraft-app
+    ports:
+      - "8080:8080"
+    volumes:
+      - .:/app
+    working_dir: /app
+    command: ["./gradlew", "bootRun"]
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:h2:mem:testdb
+      SPRING_DATASOURCE_USERNAME: sa
+      SPRING_DATASOURCE_PASSWORD: ""
+    depends_on:
+      - h2-db
+
+  h2-db:
+    image: oscarfonts/h2:latest
+    container_name: h2-db
+    ports:
+      - "9092:9092"
+      - "8081:8081"
+    environment:
+      H2_OPTIONS: '-ifNotExists'
+    volumes:
+      - h2-data:/data
+
+volumes:
+  h2-data:
