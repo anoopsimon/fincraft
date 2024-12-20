@@ -1,3 +1,8 @@
+
+# API Documentation
+
+## User Management Endpoints
+
 ### Get All Users
 GET http://localhost:8080/api/users
 Accept: application/json
@@ -15,5 +20,82 @@ Content-Type: application/json
   "email": "john.doe@example.com"
 }
 
-### Access h2 console
+---
+
+## Customer Management Endpoints
+
+### Create a New Customer
+POST http://localhost:8080/api/customers
+Content-Type: application/json
+
+{
+  "name": "Jane Doe",
+  "email": "jane.doe@example.com",
+  "phoneNumber": "1234567890"
+}
+
+### Get All Customers
+GET http://localhost:8080/api/customers
+Accept: application/json
+
+### Get Customer by ID
+GET http://localhost:8080/api/customers/1
+Accept: application/json
+
+---
+
+## Account Management Endpoints
+
+### Create an Account (Transaction or Deposit)
+POST http://localhost:8080/api/accounts
+Content-Type: application/json
+
+{
+  "customerId": 1,
+  "accountType": "TRANSACTION", // or "DEPOSIT"
+  "initialBalance": 1000.0
+}
+
+### Get All Accounts for a Customer
+GET http://localhost:8080/api/accounts/customer/1
+Accept: application/json
+
+### Deposit Funds
+POST http://localhost:8080/api/accounts/{accountId}/deposit
+Content-Type: application/json
+
+{
+  "amount": 500.0
+}
+
+### Transfer Funds to Another Payee
+POST http://localhost:8080/api/accounts/transfer
+Content-Type: application/json
+
+{
+  "fromAccountId": 101,
+  "toAccountId": 102,
+  "amount": 200.0
+}
+
+---
+
+## Credit Card Management Endpoints
+
+### Create a New Credit Card
+POST http://localhost:8080/api/credit-cards
+Content-Type: application/json
+
+{
+  "customerId": 1,
+  "creditLimit": 5000.0
+}
+
+### Get All Credit Cards for a Customer
+GET http://localhost:8080/api/credit-cards/customer/1
+Accept: application/json
+
+---
+
+## Access H2 Console
 GET http://localhost:8080/h2-console
