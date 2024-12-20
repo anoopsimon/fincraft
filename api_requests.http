@@ -87,5 +87,5 @@ Accept: application/json
 
 ---
 
-## Access H2 Console
+### Access H2 Console
 GET http://localhost:8080/h2-console
