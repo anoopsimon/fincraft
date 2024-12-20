@@ -31,6 +31,9 @@ public class CreditCardController {
     // Create a new credit card
     @PostMapping
     public ResponseEntity<CreditCard> createCreditCard(@RequestBody CreditCard creditCard) {
+        if (creditCard.getCurrentOutstanding() == null) {
+            creditCard.setCurrentOutstanding(0.0); // Default outstanding balance
+        }
         CreditCard savedCard = creditCardRepository.save(creditCard);
         return ResponseEntity.status(HttpStatus.CREATED).body(savedCard);
     }
