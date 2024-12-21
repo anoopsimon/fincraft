@@ -1,32 +1,36 @@
-
 # API Documentation
 
-## User Management Endpoints
-
-### Get All Users
-GET http://localhost:8080/api/users
-Accept: application/json
-
-### Get User by ID
-GET http://localhost:8080/api/users/1
-Accept: application/json
-
-### Create a New User
-POST http://localhost:8080/api/users
+### 1) Generate Token
+POST http://localhost:8080/auth/token
 Content-Type: application/json
 
 {
-  "name": "John Doe",
-  "email": "john.doe@example.com"
+  "secret": "mysecret",
+  "scope": "read"
 }
 
----
+> {%
+  // Safely parse the JSON response
+  let body;
+  try {
+    body = JSON.parse(response.body);
+  } catch (error) {
+    throw new Error("Response is not valid JSON: " + response.body);
+  }
 
-## Customer Management Endpoints
+  // Check that 'token' is present in the response
+  if (!body.token) {
+    throw new Error("No 'token' field found in the response: " + JSON.stringify(body));
+  }
+
+  // Store the token in a global variable named 'token'
+  client.global.set("token", body.token);
+%}
 
 ### Create a New Customer
 POST http://localhost:8080/api/customers
 Content-Type: application/json
+Authorization: Bearer {{token}}
 
 {
   "name": "Jane Doe",
@@ -37,10 +41,12 @@ Content-Type: application/json
 ### Get All Customers
 GET http://localhost:8080/api/customers
 Accept: application/json
+Authorization: Bearer {{token}}
 
 ### Get Customer by ID
 GET http://localhost:8080/api/customers/1
 Accept: application/json
+Authorization: Bearer {{token}}
 
 ---
 
@@ -49,6 +55,7 @@ Accept: application/json
 ### Create an Account (Transaction or Deposit)
 POST http://localhost:8080/api/accounts
 Content-Type: application/json
+Authorization: Bearer {{token}}
 
 {
   "customerId": 1,
@@ -56,34 +63,34 @@ Content-Type: application/json
   "balance": 1000.0
 }
 
-
 ### Get All Accounts for a Customer
 GET http://localhost:8080/api/accounts/customer/1
 Accept: application/json
+Authorization: Bearer {{token}}
 
 ### Deposit Funds
-POST http://localhost:8080/api/accounts/{accountId}/deposit
+POST http://localhost:8080/api/accounts/1/deposit
 Content-Type: application/json
+Authorization: Bearer {{token}}
 
 {
   "amount": 500.0
 }
 
-
 ### Create a New Credit Card
 POST http://localhost:8080/api/credit-cards
 Content-Type: application/json
+Authorization: Bearer {{token}}
 
 {
   "customerId": 1,
   "creditLimit": 5000.0
 }
 
-
 ### Get All Credit Cards for a Customer
 GET http://localhost:8080/api/credit-cards/customer/1
 Accept: application/json
-
+Authorization: Bearer {{token}}
 
 ---
 

@@ -1,0 +1,29 @@
+### 1) Generate Token
+POST http://localhost:8080/auth/token
+Content-Type: application/json
+
+{
+  "secret": "mysecret",
+  "scope": "read"
+}
+
+> {%
+  // Parse JSON response
+  const json = JSON.parse(response.body);
+  json.token = undefined;
+
+  // Store the token in a global variable named 'token'
+  client.global.set("token", json.token);
+%}
+
+
+### 2) Use the Stored Token (e.g., Create a New Customer)
+POST http://localhost:8080/api/customers
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "name": "Jane Doe",
+  "email": "jane.doe@example.com",
+  "phoneNumber": "1234567890"
+}
