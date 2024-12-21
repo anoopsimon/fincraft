@@ -1,4 +1,4 @@
-package io.anoopsimon.fincraft;
+package io.anoopsimon.fincraft.blackbox;
 
 import io.restassured.RestAssured;
 import org.junit.jupiter.api.BeforeAll;
