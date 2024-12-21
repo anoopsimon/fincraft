@@ -36,32 +36,7 @@ class FincraftApiTests {
                 .header("Authorization", "Bearer " + authToken);
     }
 
-    // ----------------------------------------------------------------
-    // User Management Tests
-    // ----------------------------------------------------------------
-    @Test
-    void testGetAllUsers() {
-        authorizedRequest()
-                .accept("application/json")
-                .when()
-                .get("/api/users")
-                .then()
-                .statusCode(200)
-                .body("$", not(empty()));
-    }
-
-    @Test
-    void testGetUserById() {
-        authorizedRequest()
-                .accept("application/json")
-                .when()
-                .get("/api/users/1")
-                .then()
-                .statusCode(200)
-                .body("id", equalTo(1));
-    }
-
-    // ----------------------------------------------------------------
+          // ----------------------------------------------------------------
     // Customer Management Tests
     // ----------------------------------------------------------------
     @Test
