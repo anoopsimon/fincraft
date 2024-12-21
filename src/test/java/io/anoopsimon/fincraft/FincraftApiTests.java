@@ -9,16 +9,39 @@ import static org.hamcrest.Matchers.*;
 
 class FincraftApiTests {
 
+    private static String authToken;  // Store JWT here
+
     @BeforeAll
     static void setup() {
         RestAssured.baseURI = "http://localhost";
         RestAssured.port = 8080;
+
+        // 1) Obtain token from /auth/token and store it in authToken
+        authToken = given()
+                .contentType("application/json")
+                .body("{\"secret\": \"mysecret\", \"scope\": \"read\"}")
+                .when()
+                .post("/auth/token")
+                .then()
+                .statusCode(200)
+                .extract()
+                .path("token");  // Adjust if your response field differs
     }
 
+    // ----------------------------------------------------------------
+    // Helper method to add Authorization header to each request
+    // ----------------------------------------------------------------
+    private static io.restassured.specification.RequestSpecification authorizedRequest() {
+        return given()
+                .header("Authorization", "Bearer " + authToken);
+    }
+
+    // ----------------------------------------------------------------
     // User Management Tests
+    // ----------------------------------------------------------------
     @Test
     void testGetAllUsers() {
-        given()
+        authorizedRequest()
                 .accept("application/json")
                 .when()
                 .get("/api/users")
@@ -29,7 +52,7 @@ class FincraftApiTests {
 
     @Test
     void testGetUserById() {
-        given()
+        authorizedRequest()
                 .accept("application/json")
                 .when()
                 .get("/api/users/1")
@@ -38,12 +61,12 @@ class FincraftApiTests {
                 .body("id", equalTo(1));
     }
 
-
-
+    // ----------------------------------------------------------------
     // Customer Management Tests
+    // ----------------------------------------------------------------
     @Test
     void testCreateCustomer() {
-        given()
+        authorizedRequest()
                 .contentType("application/json")
                 .body("{\"name\": \"Jane Doe\", \"email\": \"jane.doe@example.com\", \"phoneNumber\": \"1234567890\"}")
                 .when()
@@ -56,7 +79,7 @@ class FincraftApiTests {
 
     @Test
     void testGetAllCustomers() {
-        given()
+        authorizedRequest()
                 .accept("application/json")
                 .when()
                 .get("/api/customers")
@@ -67,7 +90,7 @@ class FincraftApiTests {
 
     @Test
     void testGetCustomerById() {
-        given()
+        authorizedRequest()
                 .accept("application/json")
                 .when()
                 .get("/api/customers/1")
@@ -76,10 +99,12 @@ class FincraftApiTests {
                 .body("id", equalTo(1));
     }
 
+    // ----------------------------------------------------------------
     // Account Management Tests
+    // ----------------------------------------------------------------
     @Test
     void testCreateAccount() {
-        given()
+        authorizedRequest()
                 .contentType("application/json")
                 .body("{\"customerId\": 1, \"accountType\": \"TRANSACTION\", \"balance\": 1000.0}")
                 .when()
@@ -92,7 +117,7 @@ class FincraftApiTests {
 
     @Test
     void testGetAllAccountsForCustomer() {
-        given()
+        authorizedRequest()
                 .accept("application/json")
                 .when()
                 .get("/api/accounts/customer/1")
@@ -101,12 +126,12 @@ class FincraftApiTests {
                 .body("$", not(empty()));
     }
 
-
-
+    // ----------------------------------------------------------------
     // Credit Card Management Tests
+    // ----------------------------------------------------------------
     @Test
     void testCreateCreditCard() {
-        given()
+        authorizedRequest()
                 .contentType("application/json")
                 .body("{\"customerId\": 1, \"creditLimit\": 5000.0}")
                 .when()
@@ -119,7 +144,7 @@ class FincraftApiTests {
 
     @Test
     void testGetAllCreditCardsForCustomer() {
-        given()
+        authorizedRequest()
                 .accept("application/json")
                 .when()
                 .get("/api/credit-cards/customer/1")
@@ -128,10 +153,12 @@ class FincraftApiTests {
                 .body("$", not(empty()));
     }
 
+    // ----------------------------------------------------------------
     // H2 Console Test
+    // ----------------------------------------------------------------
     @Test
     void testH2ConsoleAccess() {
-        given()
+        authorizedRequest()
                 .when()
                 .get("/h2-console")
                 .then()
