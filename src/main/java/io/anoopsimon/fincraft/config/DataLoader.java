@@ -53,8 +53,7 @@ public class DataLoader implements CommandLineRunner {
      */
     private String modifyQueryWithParams(String query, int index) {
         return query
-                .replace(":id", String.valueOf(index))
-                .replace(":customerId", String.valueOf(index))
+                .replace(":customerId", String.valueOf(index)) // Use generated IDs for customer references
                 .replace(":name", "'Customer " + index + "'")
                 .replace(":email", "'customer" + index + "@example.com'")
                 .replace(":phoneNumber", "'123456789" + index + "'")
