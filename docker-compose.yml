@@ -2,14 +2,12 @@ version: '3.8'
 
 services:
   app:
-    image: openjdk:17-jdk-alpine
+    build:
+      context: .
+      dockerfile: Dockerfile
     container_name: fincraft-app
     ports:
       - "8080:8080"
-    volumes:
-      - .:/app
-    working_dir: /app
-    command: ["./gradlew", "bootRun"]
     environment:
       SPRING_DATASOURCE_URL: jdbc:h2:mem:testdb
       SPRING_DATASOURCE_USERNAME: sa
@@ -27,6 +25,16 @@ services:
       H2_OPTIONS: '-ifNotExists'
     volumes:
       - h2-data:/data
+
+  test-runner:
+    image: openjdk:17-jdk-alpine
+    container_name: test-runner
+    depends_on:
+      - app
+    volumes:
+      - .:/app
+    working_dir: /app
+    command: ["sh", "-c", "./gradlew --no-daemon test"]
 
 volumes:
   h2-data:
