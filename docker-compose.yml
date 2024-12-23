@@ -34,6 +34,7 @@ services:
     volumes:
       - .:/app
     working_dir: /app
+    # Command runs tests against the *already running* `app` container
     command: ["sh", "-c", "./gradlew --no-daemon test"]
 
 volumes:
