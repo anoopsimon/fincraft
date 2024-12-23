@@ -91,7 +91,7 @@ SELECT * FROM "user";
    ./gradlew bootRun
    ```
 4. Test the endpoints using tools like **Postman**, **IntelliJ HTTP Client**, or a browser.
-
+   [HttpClient - IntelliJ](https://www.jetbrains.com/help/idea/exploring-http-syntax.html#environment-variables)
 ---
 
 ## 🐳 **Run This App Using Docker Compose**

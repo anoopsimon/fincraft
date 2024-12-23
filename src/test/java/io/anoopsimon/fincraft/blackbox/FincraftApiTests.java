@@ -13,7 +13,13 @@ class FincraftApiTests {
 
     @BeforeAll
     static void setup() {
-        RestAssured.baseURI = "http://localhost";
+        String apiUrl = System.getenv("TEST_API_URL"); // Fetch the API URL from environment variables
+        if (apiUrl == null) {
+            apiUrl = "http://app:8080"; // Default to localhost if the variable is not set
+        }
+        RestAssured.baseURI = apiUrl;
+
+       // RestAssured.baseURI = "http://localhost";
         RestAssured.port = 8080;
 
         // 1) Obtain token from /auth/token and store it in authToken

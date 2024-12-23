@@ -1,6 +1,6 @@
 # Variables
 COMPOSE=docker-compose
-APP_NAME=fincraft-app
+APP_NAME=app
 TEST_RUNNER=test-runner
 DB_NAME=h2-db
 
@@ -62,7 +62,7 @@ wait:
 		exit 1;"
 
 # Run tests against the running API container
-test: build up wait
+test: build up
 	@echo "Running integration tests using the test-runner container..."
 	$(COMPOSE) run --rm $(TEST_RUNNER)
 
