@@ -17,7 +17,7 @@ jobs:
         uses: actions/setup-java@v3
         with:
           java-version: 17
-          distribution: 'temurin'
+          distribution: temurin
 
       - name: Cache Gradle dependencies
         uses: actions/cache@v3
@@ -34,6 +34,13 @@ jobs:
           chmod +x ./gradlew
           chmod +x ./Makefile
 
+      # 1. Install Docker Compose
+      - name: Install Docker Compose
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y docker-compose
+
+      # 2. Run make build (now that docker-compose is installed)
       - name: Make Build
         run: make build
 
