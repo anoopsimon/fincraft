@@ -3,8 +3,6 @@ package io.anoopsimon.fincraft.healthcheck;
 import io.anoopsimon.fincraft.util.BaseTest;
 import org.junit.jupiter.api.Test;
 
-import static io.restassured.RestAssured.given;
-
 public class H2DbHealthCheckTests extends BaseTest {
 
     // ----------------------------------------------------------------
