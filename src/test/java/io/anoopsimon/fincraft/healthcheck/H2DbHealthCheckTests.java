@@ -5,9 +5,7 @@ import org.junit.jupiter.api.Test;
 
 public class H2DbHealthCheckTests extends BaseTest {
 
-    // ----------------------------------------------------------------
-    // H2 Console Test
-    // ----------------------------------------------------------------
+
     @Test
     void testH2ConsoleAccess() {
         authorizedRequest()
