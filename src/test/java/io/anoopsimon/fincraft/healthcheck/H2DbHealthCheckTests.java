@@ -1,0 +1,21 @@
+package io.anoopsimon.fincraft.healthcheck;
+
+import io.anoopsimon.fincraft.util.BaseTest;
+import org.junit.jupiter.api.Test;
+
+import static io.restassured.RestAssured.given;
+
+public class H2DbHealthCheckTests extends BaseTest {
+
+    // ----------------------------------------------------------------
+    // H2 Console Test
+    // ----------------------------------------------------------------
+    @Test
+    void testH2ConsoleAccess() {
+        authorizedRequest()
+                .when()
+                .get("/h2-console")
+                .then()
+                .statusCode(200);
+    }
+}
