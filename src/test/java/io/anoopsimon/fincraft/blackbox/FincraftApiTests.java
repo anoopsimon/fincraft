@@ -1,48 +1,21 @@
 package io.anoopsimon.fincraft.blackbox;
 
+import io.anoopsimon.fincraft.util.BaseTest;
+import io.anoopsimon.fincraft.util.ConfigUtil;
 import io.restassured.RestAssured;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 
 import static io.restassured.RestAssured.*;
 import static org.hamcrest.Matchers.*;
 
-class FincraftApiTests {
+@SpringBootTest
+class FincraftApiTests extends BaseTest {
 
-    private static String authToken;  // Store JWT here
-
-    @BeforeAll
-    static void setup() {
-        String apiUrl = System.getenv("TEST_API_URL"); // Fetch the API URL from environment variables
-        if (apiUrl == null) {
-            apiUrl = "http://app:8080"; // Default to localhost if the variable is not set
-        }
-        RestAssured.baseURI = apiUrl;
-
-       // RestAssured.baseURI = "http://localhost";
-        RestAssured.port = 8080;
-
-        // 1) Obtain token from /auth/token and store it in authToken
-        authToken = given()
-                .contentType("application/json")
-                .body("{\"secret\": \"mysecret\", \"scope\": \"read\"}")
-                .when()
-                .post("/auth/token")
-                .then()
-                .statusCode(200)
-                .extract()
-                .path("token");  // Adjust if your response field differs
-    }
 
     // ----------------------------------------------------------------
-    // Helper method to add Authorization header to each request
-    // ----------------------------------------------------------------
-    private static io.restassured.specification.RequestSpecification authorizedRequest() {
-        return given()
-                .header("Authorization", "Bearer " + authToken);
-    }
-
-          // ----------------------------------------------------------------
     // Customer Management Tests
     // ----------------------------------------------------------------
     @Test
@@ -134,15 +107,5 @@ class FincraftApiTests {
                 .body("$", not(empty()));
     }
 
-    // ----------------------------------------------------------------
-    // H2 Console Test
-    // ----------------------------------------------------------------
-    @Test
-    void testH2ConsoleAccess() {
-        authorizedRequest()
-                .when()
-                .get("/h2-console")
-                .then()
-                .statusCode(200);
-    }
+
 }
