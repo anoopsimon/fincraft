@@ -17,18 +17,21 @@ public class ConfigUtil {
         }
     }
 
-    /**
-     * Retrieves a configuration value.
-     * 1. Checks in the properties file.
-     * 2. Checks in environment variables.
-     * 3. Returns the default value if neither exists.
-     *
-     * @param key          The key to lookup.
-     * @param defaultValue The default value to use if no value is found.
-     * @return The resolved value.
-     */
     public static String getConfig(String key, String defaultValue) {
-        return Optional.ofNullable(properties.getProperty(key)) // Check properties file
-                .orElseGet(() -> System.getProperty(key) != null ? System.getProperty(key) : defaultValue); // Check env or default
+        // 1. Check system properties first
+        String fromSystemProps = System.getProperty(key);
+        if (fromSystemProps != null) {
+            return fromSystemProps;
+        }
+
+        // 2. If not found in system properties, check application.properties
+        String fromProperties = properties.getProperty(key);
+        if (fromProperties != null) {
+            return fromProperties;
+        }
+
+        // 3. Fallback to the default value
+        return defaultValue;
     }
+
 }
