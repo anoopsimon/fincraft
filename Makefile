@@ -64,7 +64,7 @@ wait:
 # Run tests against the running API container
 test: build up
 	@echo "Running integration tests using the test-runner container..."
-	$(COMPOSE) run --rm $(TEST_RUNNER)
+	$(COMPOSE) run --rm -e TEST_API_URL=$(TEST_API_URL) $(TEST_RUNNER)
 
 # Show help
 help:

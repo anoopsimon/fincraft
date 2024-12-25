@@ -29,13 +29,15 @@ services:
   test-runner:
     image: openjdk:17-jdk-alpine
     container_name: test-runner
+    environment:
+      TEST_API_URL: "${TEST_API_URL}"
     depends_on:
       - app
     volumes:
       - .:/app
     working_dir: /app
     # Command runs tests against the *already running* `app` container
-    command: ["sh", "-c", "./gradlew --no-daemon test"]
+    command: ["sh", "-c", "./gradlew --no-daemon test -PTEST_API_URL=$TEST_API_URL"]
 
 volumes:
   h2-data:

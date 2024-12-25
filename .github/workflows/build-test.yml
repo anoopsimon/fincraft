@@ -45,7 +45,7 @@ jobs:
         run: make build
 
       - name: Make Test
-        run: make test
+        run: make test TEST_API_URL=http://app:8080
 
       # Publish JUnit Test Results
       - name: Publish Test Results
