@@ -37,7 +37,7 @@ services:
       - .:/app
     working_dir: /app
     # Command runs tests against the *already running* `app` container
-    command: ["sh", "-c", "./gradlew --no-daemon test -PTEST_API_URL=$TEST_API_URL"]
+    command: ["sh", "-c", "./gradlew --no-daemon test -DTEST_API_URL=$TEST_API_URL"]
 
 volumes:
   h2-data:
