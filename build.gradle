@@ -46,5 +46,6 @@ dependencies {
 }
 
 tasks.named('test') {
+	systemProperty 'TEST_API_URL', System.properties['TEST_API_URL'] ?: 'http://localhost:8080'
 	useJUnitPlatform()
 }

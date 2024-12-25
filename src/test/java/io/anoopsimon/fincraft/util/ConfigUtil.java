@@ -29,6 +29,6 @@ public class ConfigUtil {
      */
     public static String getConfig(String key, String defaultValue) {
         return Optional.ofNullable(properties.getProperty(key)) // Check properties file
-                .orElseGet(() -> System.getenv(key) != null ? System.getenv(key) : defaultValue); // Check env or default
+                .orElseGet(() -> System.getProperty(key) != null ? System.getProperty(key) : defaultValue); // Check env or default
     }
 }
