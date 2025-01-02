@@ -12,6 +12,17 @@ This is a simple backend project designed to help understand the basics of build
 
 ---
 
+```mermaid
+flowchart LR
+    A[Client] --> |HTTP Request| B[Controller]
+    B --> C[Service Layer]
+    C --> D[Model]
+    D --> |JPA/Spring Data| E[(H2 Database)]
+    C --> |Dependency Injection| F[Repository Class<br/>Extending CRUD Services]
+    F --> E
+
+```
+
 ## 🛠️ **Tech Stack**
 - **Backend**: Java 17 with Spring Boot 3.4.0
 - **Database**: H2 (in-memory database)
