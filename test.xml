@@ -1,0 +1,240 @@
+{
+  "contentType": "application/gliffy+json",
+  "version": "1.0",
+  "editorVersion": "13.0.0",
+  "metadata": {
+    "title": "Bank to Perfecto Cloud Integration"
+  },
+  "pages": [
+    {
+      "elements": [
+        {
+          "type": "uml.class",
+          "id": "users",
+          "x": 20,
+          "y": 40,
+          "width": 120,
+          "height": 60,
+          "title": "Users (QA/Dev)",
+          "fill": "#f9f"
+        },
+        {
+          "type": "uml.class",
+          "id": "sso",
+          "x": 180,
+          "y": 40,
+          "width": 120,
+          "height": 60,
+          "title": "SSO (SAML)",
+          "fill": "#ddd"
+        },
+        {
+          "type": "uml.class",
+          "id": "proxy",
+          "x": 180,
+          "y": 120,
+          "width": 120,
+          "height": 60,
+          "title": "Proxy / NGFW",
+          "fill": "#ccc"
+        },
+        {
+          "type": "uml.class",
+          "id": "cicd",
+          "x": 20,
+          "y": 120,
+          "width": 120,
+          "height": 60,
+          "title": "CI/CD (Jenkins + Harness)",
+          "fill": "#bbf"
+        },
+        {
+          "type": "uml.class",
+          "id": "token",
+          "x": 20,
+          "y": 200,
+          "width": 120,
+          "height": 60,
+          "title": "Security Token Auth",
+          "fill": "#ddd"
+        },
+        {
+          "type": "uml.class",
+          "id": "vpn",
+          "x": 320,
+          "y": 120,
+          "width": 140,
+          "height": 60,
+          "title": "IPSec VPN Tunnel",
+          "fill": "#faa"
+        },
+        {
+          "type": "uml.class",
+          "id": "jira",
+          "x": 20,
+          "y": 280,
+          "width": 120,
+          "height": 60,
+          "title": "JIRA / Test Mgmt",
+          "fill": "#eee"
+        },
+        {
+          "type": "uml.class",
+          "id": "siem",
+          "x": 180,
+          "y": 280,
+          "width": 120,
+          "height": 60,
+          "title": "SIEM / Splunk",
+          "fill": "#fcf"
+        },
+        {
+          "type": "uml.class",
+          "id": "ui",
+          "x": 480,
+          "y": 40,
+          "width": 120,
+          "height": 60,
+          "title": "Perfecto Web UI",
+          "fill": "#afa"
+        },
+        {
+          "type": "uml.class",
+          "id": "api",
+          "x": 480,
+          "y": 120,
+          "width": 120,
+          "height": 60,
+          "title": "Perfecto REST API",
+          "fill": "#afa"
+        },
+        {
+          "type": "uml.class",
+          "id": "devlab",
+          "x": 480,
+          "y": 200,
+          "width": 120,
+          "height": 60,
+          "title": "Device Lab",
+          "fill": "#ddd"
+        },
+        {
+          "type": "uml.class",
+          "id": "logs",
+          "x": 480,
+          "y": 280,
+          "width": 120,
+          "height": 60,
+          "title": "Test Logs",
+          "fill": "#eee"
+        },
+
+        // Arrows
+        {
+          "type": "line",
+          "id": "arrow1",
+          "start": "users",
+          "end": "sso",
+          "lineStyle": "solid",
+          "endArrow": "block"
+        },
+        {
+          "type": "line",
+          "id": "arrow2",
+          "start": "sso",
+          "end": "ui",
+          "lineStyle": "solid",
+          "endArrow": "block"
+        },
+        {
+          "type": "line",
+          "id": "arrow3",
+          "start": "users",
+          "end": "proxy",
+          "lineStyle": "solid",
+          "endArrow": "block"
+        },
+        {
+          "type": "line",
+          "id": "arrow4",
+          "start": "cicd",
+          "end": "proxy",
+          "lineStyle": "solid",
+          "endArrow": "block"
+        },
+        {
+          "type": "line",
+          "id": "arrow5",
+          "start": "proxy",
+          "end": "vpn",
+          "lineStyle": "solid",
+          "endArrow": "block"
+        },
+        {
+          "type": "line",
+          "id": "arrow6",
+          "start": "vpn",
+          "end": "api",
+          "lineStyle": "solid",
+          "endArrow": "block"
+        },
+        {
+          "type": "line",
+          "id": "arrow7",
+          "start": "vpn",
+          "end": "ui",
+          "lineStyle": "solid",
+          "endArrow": "block"
+        },
+        {
+          "type": "line",
+          "id": "arrow8",
+          "start": "token",
+          "end": "api",
+          "lineStyle": "solid",
+          "endArrow": "block"
+        },
+        {
+          "type": "line",
+          "id": "arrow9",
+          "start": "cicd",
+          "end": "jira",
+          "lineStyle": "solid",
+          "endArrow": "block"
+        },
+        {
+          "type": "line",
+          "id": "arrow10",
+          "start": "cicd",
+          "end": "siem",
+          "lineStyle": "solid",
+          "endArrow": "block"
+        },
+        {
+          "type": "line",
+          "id": "arrow11",
+          "start": "logs",
+          "end": "siem",
+          "lineStyle": "solid",
+          "endArrow": "block"
+        },
+        {
+          "type": "line",
+          "id": "arrow12",
+          "start": "api",
+          "end": "vpn",
+          "lineStyle": "solid",
+          "endArrow": "block"
+        },
+        {
+          "type": "line",
+          "id": "arrow13",
+          "start": "ui",
+          "end": "vpn",
+          "lineStyle": "solid",
+          "endArrow": "block"
+        }
+      ]
+    }
+  ]
+}
