@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gliffy xmlns="http://www.gliffy.com/gliffy" version="1.0">
+  <metadata>
+    <title>Bank to Perfecto Cloud Integration</title>
+  </metadata>
+  <resources>
+    <resource id="1" type="uml.class" width="120" height="60" x="20" y="40" rotation="0" tid="0" />
+    <resource id="2" type="uml.class" width="120" height="60" x="180" y="40" rotation="0" tid="0" />
+    <resource id="3" type="uml.class" width="120" height="60" x="180" y="120" rotation="0" tid="0" />
+    <resource id="4" type="uml.class" width="120" height="60" x="20" y="120" rotation="0" tid="0" />
+    <resource id="5" type="uml.class" width="120" height="60" x="20" y="200" rotation="0" tid="0" />
+    <resource id="6" type="uml.class" width="140" height="60" x="320" y="120" rotation="0" tid="0" />
+    <resource id="7" type="uml.class" width="120" height="60" x="20" y="280" rotation="0" tid="0" />
+    <resource id="8" type="uml.class" width="120" height="60" x="180" y="280" rotation="0" tid="0" />
+    <resource id="9" type="uml.class" width="120" height="60" x="480" y="40" rotation="0" tid="0" />
+    <resource id="10" type="uml.class" width="120" height="60" x="480" y="120" rotation="0" tid="0" />
+    <resource id="11" type="uml.class" width="120" height="60" x="480" y="200" rotation="0" tid="0" />
+    <resource id="12" type="uml.class" width="120" height="60" x="480" y="280" rotation="0" tid="0" />
+
+    <line id="101" startID="1" endID="2" />
+    <line id="102" startID="2" endID="9" />
+    <line id="103" startID="1" endID="3" />
+    <line id="104" startID="4" endID="3" />
+    <line id="105" startID="3" endID="6" />
+    <line id="106" startID="6" endID="10" />
+    <line id="107" startID="6" endID="9" />
+    <line id="108" startID="5" endID="10" />
+    <line id="109" startID="4" endID="7" />
+    <line id="110" startID="4" endID="8" />
+    <line id="111" startID="12" endID="8" />
+    <line id="112" startID="10" endID="6" />
+    <line id="113" startID="9" endID="6" />
+  </resources>
+  <objects>
+    <object id="1"><name>Users (QA/Dev)</name><fill>#f9f</fill></object>
+    <object id="2"><name>SSO (SAML)</name><fill>#ddd</fill></object>
+    <object id="3"><name>Proxy / NGFW</name><fill>#ccc</fill></object>
+    <object id="4"><name>CI/CD (Jenkins + Harness)</name><fill>#bbf</fill></object>
+    <object id="5"><name>Security Token Auth</name><fill>#ddd</fill></object>
+    <object id="6"><name>IPSec VPN Tunnel</name><fill>#faa</fill></object>
+    <object id="7"><name>JIRA / Test Mgmt</name><fill>#eee</fill></object>
+    <object id="8"><name>SIEM / Splunk</name><fill>#fcf</fill></object>
+    <object id="9"><name>Perfecto Web UI</name><fill>#afa</fill></object>
+    <object id="10"><name>Perfecto REST API</name><fill>#afa</fill></object>
+    <object id="11"><name>Device Lab</name><fill>#ddd</fill></object>
+    <object id="12"><name>Test Logs</name><fill>#eee</fill></object>
+  </objects>
+</gliffy>
